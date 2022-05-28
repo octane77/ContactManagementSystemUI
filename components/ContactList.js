@@ -10,6 +10,7 @@ const ContactList = ({contact}) => {
     const [contacts, setContacts] = useState(null)
     const [loading, setLoading] = useState(true)
     const [contactId, setContactId] = useState(null)
+    const [responseContact, setResponseContact] = useState(null)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +30,7 @@ const ContactList = ({contact}) => {
             setLoading(false)
         }
         fetchData()
-    }, [contact])
+    }, [contact, responseContact])
 
     const deleteContact = (e, id) => {
         e.preventDefault();
@@ -75,7 +76,7 @@ const ContactList = ({contact}) => {
                 </table>
             </div>
         </div>
-    <EditContact contactId={contactId}/>
+    <EditContact contactId={contactId} setResponseContact={setResponseContact}/>
     </>
 )
 
